@@ -6,8 +6,8 @@ SHELL ["/bin/bash", "-c"]
 
 # Install other needed packages
 RUN add-apt-repository -y ppa:ondrej/php
-RUN apt-get update
-RUN apt install php8.0
+RUN add-apt-repository -y ppa:ondrej/apache2
+RUN apt install -y php8.0
 RUN update-alternatives --set php /usr/bin/php8.0
 RUN sudo apt install -y curl php-curl php-gd php-mbstring php-pear php-apcu php-json php-xdebug build-essential sendmail
 RUN pecl install apcu
