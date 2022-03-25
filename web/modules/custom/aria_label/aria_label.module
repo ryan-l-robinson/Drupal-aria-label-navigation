@@ -1,0 +1,37 @@
+<?php
+
+function aria_label_implements_alter(&$implementations, $hook) {
+  if ($hook == 'aria_label') {
+    $aria = $implementations['aria_label'];
+    $link_attributes = $implementations['link_attributes'];
+  
+    unset($implementations['aria_label'], $implementations['link_attributes']);
+  
+    $implementations['link_attributes'] = $link_attributes;
+    $implementations['aria_label'] = $aria;
+  }
+}
+
+  /**
+   * TODO: this is adapted from https://www.drupal.org/docs/contributed-modules/link-attributes/adding-custom-attributes
+   * It causes a site-breaking error, citing that $entity_type is not the correct type
+function aria_label_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type) {
+  if ($entity_type->id() === 'menu_link_content') {
+    $fields['link']->setDisplayOptions('form', [
+      'type' => 'link_attributes',
+      'weight' => -2,
+      'settings' => [
+        'enabled_attributes' => [
+          'id' => FALSE,
+          'name' => FALSE,
+          'target' => TRUE,
+          'rel' => FALSE,
+          'class' => FALSE,
+          'accesskey' => FALSE,
+          'aria-label' => TRUE,
+        ],
+      ],
+    ]);
+  }
+}
+**/

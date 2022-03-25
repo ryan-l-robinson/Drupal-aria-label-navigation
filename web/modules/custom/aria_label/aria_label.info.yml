@@ -1,0 +1,7 @@
+name: 'Aria Label Menu Links'
+type: module
+description: 'Allows for adding aria-label to menu links'
+package: Custom
+core_version_requirement: ^9
+dependencies:
+  - drupal:link_attributes
